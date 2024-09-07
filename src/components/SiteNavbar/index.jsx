@@ -3,7 +3,11 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
 const SiteNavbar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      className={classes.navbar}
+    >
       <Container>
         <Navbar.Brand href="#home">HakHyzmat</Navbar.Brand>
         <Navbar.Toggle />
@@ -11,7 +15,7 @@ const SiteNavbar = () => {
           <Nav className="me-auto w-100 justify-content-end">
             <Nav.Link href="#features">Home</Nav.Link>
             <Nav.Link href="#pricing">Info</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
+            <NavDropdown title="Services" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Services</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
@@ -22,7 +26,7 @@ const SiteNavbar = () => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
+            <NavDropdown title="Products" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Products</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
