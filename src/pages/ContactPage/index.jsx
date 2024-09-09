@@ -45,7 +45,7 @@ const ContactPage = () => {
           </div>
           <div className="col-sm-12 col-md-4">
             <div className="px-4">
-              <h1>Feedback</h1>
+              <h1>Contact details</h1>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Tenetur, placeat illum? Repudiandae sequi recusandae odio
