@@ -1,0 +1,10 @@
+
+.gokBlok {
+    background-color: #120446;
+    padding: 50px;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
