@@ -1,0 +1,16 @@
+.title {
+    color: #222258;
+}
+
+.brandLogo {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    -webkit-user-drag: none;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

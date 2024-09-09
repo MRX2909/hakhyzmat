@@ -1,5 +1,8 @@
 .navbar {
-    color: #0b0447;
     box-shadow: 0 2px 5px #777;
     z-index: 100;
+}
+
+.navbar * {
+    color: #222258 !important;
 }

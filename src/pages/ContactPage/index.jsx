@@ -8,7 +8,11 @@ const ContactPage = () => {
         <div className="row justify-content-center">
           <div className="col-sm-12 col-md-4">
             <div className="p-3">
-              <h1>Contact us</h1>
+              <h1>Get in touch today</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+                reprehenderit dolorem.
+              </p>
               <div className="my-3">
                 <label htmlFor="username">Your name:</label>
                 <Form.Control
@@ -44,14 +48,18 @@ const ContactPage = () => {
             </div>
           </div>
           <div className="col-sm-12 col-md-4">
-            <div className="px-4">
+            <div className="p-3">
               <h1>Contact details</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tenetur, placeat illum? Repudiandae sequi recusandae odio
-                inventore suscipit autem rerum aliquam incidunt non. Dolorem
-                voluptatum consectetur quo consequuntur cum voluptate similique?
-              </p>
+              <div>
+                <div className={classes}>Our Location</div>
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tenetur, placeat illum? Repudiandae sequi recusandae odio
+                  inventore suscipit autem rerum aliquam incidunt non. Dolorem
+                  voluptatum consectetur quo consequuntur cum voluptate
+                  similique?
+                </div>
+              </div>
               <p>
                 Tenetur, placeat illum? Repudiandae sequi recusandae odio
                 inventore suscipit autem rerum aliquam incidunt non. Dolorem
