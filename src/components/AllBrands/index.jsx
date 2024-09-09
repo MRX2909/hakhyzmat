@@ -1,8 +1,19 @@
 import { Col, Container, Row, Image } from "react-bootstrap";
 import classes from "./styles.module.css";
-import img from "../../brands/1.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const AllBrands = () => {
+  const [brands, setBrands] = useState([]);
+
+  const fetchData = async (url) => {
+    const response = await axios.get(url);
+    setBrands(response.data);
+  };
+
+  useEffect(() => {
+    fetchData("http://127.0.0.1:8000/api/brands/");
+  }, []);
   return (
     <div className="mt-5">
       <h3 align="center" className={classes.title}>
@@ -10,9 +21,13 @@ const AllBrands = () => {
       </h3>
       <Container>
         <Row>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((el) => (
-            <Col className={classes.logoWrapper} key={el}>
-              <Image src={img} className={classes.brandLogo} />
+          {brands.map((brand) => (
+            <Col className={classes.logoWrapper} key={brand.id}>
+              <Image
+                src={brand.get_icon}
+                className={classes.brandLogo}
+                title={brand.name}
+              />
             </Col>
           ))}
         </Row>

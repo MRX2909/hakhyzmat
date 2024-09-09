@@ -1,46 +1,45 @@
+import { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import classes from "./styles.module.css";
+import axios from "axios";
 
 const Slider = () => {
+  const [banners, setBanners] = useState([]);
+
+  const fetchData = async (url) => {
+    const response = await axios.get(url);
+    setBanners(response.data);
+  };
+
+  useEffect(() => {
+    fetchData("http://127.0.0.1:8000/api/banners/");
+  }, []);
+
   return (
     <Carousel
       fade
-      controls={false}
-      indicators={false}
+      controls={true}
+      indicators={true}
       keyboard={false}
       wrap={true}
       touch={true}
       interval={3000}
     >
-      <Carousel.Item>
-        <img src="/img/img1.jpg" className={classes.sliderImage} />
-        <Carousel.Caption>
-          <h1 className="shadowText" align="left">
-            First slide label
-          </h1>
-          <p className="shadowText" align="left">
-            Nulla vitae elit libero, a pharetra augue mollis interdum.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src="/img/img2.jpg" className={classes.sliderImage} />
-        <Carousel.Caption>
-          <h1 align="left">Second slide label</h1>
-          <p align="left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src="/img/img3.jpg" className={classes.sliderImage} />
-        <Carousel.Caption>
-          <h1 align="left">Third slide label</h1>
-          <p align="left">
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
+      {banners.map((banner) => {
+        return (
+          <Carousel.Item key={banner.id}>
+            <img src={banner.get_image} className={classes.sliderImage} />
+            <Carousel.Caption>
+              <h1 className="shadowText" align="left">
+                {banner.name}
+              </h1>
+              <p className="shadowText" align="left">
+                {banner.description}
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        );
+      })}
     </Carousel>
   );
 };

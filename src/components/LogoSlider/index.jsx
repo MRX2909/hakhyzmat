@@ -2,8 +2,21 @@ import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import brand_logo from "../../brands/1.png";
 import classes from "./styles.module.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const LogoSlider = () => {
+  const [brands, setBrands] = useState([]);
+
+  const fetchData = async (url) => {
+    const response = await axios.get(url);
+    setBrands(response.data);
+  };
+
+  useEffect(() => {
+    fetchData("http://127.0.0.1:8000/api/brands");
+  }, []);
+
   return (
     <div>
       <Carousel
@@ -58,21 +71,13 @@ const LogoSlider = () => {
         slidesToSlide={1}
         swipeable
       >
-        <div className={classes.sliderLogo}>
-          <img src={brand_logo} alt="brand_logo" />
-        </div>
-        <div className={classes.sliderLogo}>
-          <img src={brand_logo} alt="brand_logo" />
-        </div>
-        <div className={classes.sliderLogo}>
-          <img src={brand_logo} alt="brand_logo" />
-        </div>
-        <div className={classes.sliderLogo}>
-          <img src={brand_logo} alt="brand_logo" />
-        </div>
-        <div className={classes.sliderLogo}>
-          <img src={brand_logo} alt="brand_logo" />
-        </div>
+        {brands.map((brand) => {
+          return (
+            <div className={classes.sliderLogo} key={brand.id}>
+              <img src={brand.get_icon} alt={brand.name} title={brand.name} />
+            </div>
+          );
+        })}
       </Carousel>
     </div>
   );
