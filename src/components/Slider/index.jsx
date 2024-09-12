@@ -5,16 +5,23 @@ import axios from "axios";
 
 const Slider = () => {
   const [banners, setBanners] = useState([]);
-
-  const fetchData = async (url) => {
-    const response = await axios.get(url);
-    setBanners(response.data);
-  };
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchData = async (url) => {
+      try {
+        const response = await axios.get(url);
+        setBanners(response.data);
+      } catch (err) {
+        setError("Serwer bilen birikmede näsazlyk ýüze çykdy!");
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchData("http://127.0.0.1:8000/api/banners/");
   }, []);
-
+  
   return (
     <Carousel
       fade

@@ -5,8 +5,10 @@ import Slider from "../../components/Slider";
 const MainPage = () => {
   return (
     <>
+    <div className="mainWrapper">
       <Slider />
       <LogoSlider />
+    </div>
       <AllBrands />
     </>
   );

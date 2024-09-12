@@ -5,16 +5,33 @@ import axios from "axios";
 
 const AllBrands = () => {
   const [brands, setBrands] = useState([]);
-
-  const fetchData = async (url) => {
-    const response = await axios.get(url);
-    setBrands(response.data);
-  };
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchData = async (url) => {
+      try {
+        const response = await axios.get(url);
+        setBrands(response.data);
+      } catch (err) {
+        setError("Serwer bilen birikmede näsazlyk ýüze çykdy!");
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchData("http://127.0.0.1:8000/api/brands/");
   }, []);
+
+  if (isLoading) {
+    return <h5 align="center">Garaşyň...</h5>;
+  }
+
+  if (error) {
+    return <h5 align="center" className="my-4 text-danger">{error}</h5>;
+  }
+
   return (
+
     <div className="mt-5">
       <h3 align="center" className={classes.title}>
         Our Suppliers

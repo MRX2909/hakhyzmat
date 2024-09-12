@@ -6,7 +6,10 @@
     width: 100px;
     height: 100px;
     margin: 20px;
+    object-fit: cover;
+    object-position: center;
     -webkit-user-drag: none;
+    border-radius: 10px;
 }
 
 .logoWrapper {

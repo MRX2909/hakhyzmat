@@ -3,7 +3,7 @@ import classes from "./styles.module.css";
 const InfoPage = () => {
   return (
     <>
-      <div className={classes.gokBlok}>
+      <div className={classes.section + " " + classes.gok}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
           repellendus dicta architecto libero corporis velit? Velit accusantium
@@ -11,7 +11,7 @@ const InfoPage = () => {
           in! Ut, fugit minus.
         </p>
       </div>
-      <div className={classes.akBlok}>
+      <div className={classes.section + " " + classes.ak}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
           repellendus dicta architecto libero corporis velit? Velit accusantium
@@ -19,7 +19,7 @@ const InfoPage = () => {
           in! Ut, fugit minus.
         </p>
       </div>
-      <div className={classes.gokBlok}>
+      <div className={classes.section + " " + classes.gok}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
           repellendus dicta architecto libero corporis velit? Velit accusantium

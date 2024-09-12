@@ -1,18 +1,17 @@
-
-.gokBlok {
-    background-color: #120446;
-    padding: 50px;
-    color: #fff;
-    min-height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.section {
+  padding: 50px;
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.akBlok {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 50px;
-    min-height: 350px;
+.gok {
+  background-color: #120446;
+  color: #fff;
+}
+
+.ak {
+    background-color: #fff;
+    color: #120446;
 }
