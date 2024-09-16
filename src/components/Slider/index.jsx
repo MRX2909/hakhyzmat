@@ -21,33 +21,36 @@ const Slider = () => {
     };
     fetchData("http://127.0.0.1:8000/api/banners/");
   }, []);
-  
+
   return (
-    <Carousel
-      fade
-      controls={true}
-      indicators={true}
-      keyboard={false}
-      wrap={true}
-      touch={true}
-      interval={3000}
-    >
-      {banners.map((banner) => {
-        return (
-          <Carousel.Item key={banner.id}>
-            <img src={banner.get_image} className={classes.sliderImage} />
-            <Carousel.Caption>
-              <h1 className="shadowText" align="left">
-                {banner.name}
-              </h1>
-              <p className="shadowText" align="left">
-                {banner.description}
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+    <div className={classes.wrapper}>
+      <Carousel
+        fade
+        controls={false}
+        indicators={false}
+        keyboard={false}
+        wrap={true}
+        touch={true}
+        interval={3000}
+      >
+        {banners.map((banner) => {
+          return (
+            <Carousel.Item key={banner.id}>
+              <img src={banner.get_image} className={classes.sliderImage} />
+              <Carousel.Caption>
+                <h1 className="shadowText" align="left">
+                  {banner.name}
+                </h1>
+                <p className="shadowText" align="left">
+                  {banner.description}
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+      <div className={classes.shaped}></div>
+    </div>
   );
 };
 

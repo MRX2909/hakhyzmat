@@ -1,6 +1,5 @@
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
-import brand_logo from "../../brands/1.png";
 import classes from "./styles.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -18,7 +17,7 @@ const LogoSlider = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.outerWrapper}>
       <Carousel
         additionalTransfrom={0}
         arrows={false}

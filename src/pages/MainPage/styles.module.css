@@ -1,3 +1,15 @@
 .mainWrapper {
-    height: 100vh;
+  height: 100%;
+}
+
+.activePlace {
+  display: none;
+  height: 100px;
+  width: 200px;
+  border-radius: 100px 100px 10px 10px;
+  background-color: #fff;
+  position: absolute;
+  left: calc(50% - 50px);
+  margin-top: -75px;
+  z-index: 2;
 }

@@ -11,7 +11,7 @@ const FeedbackForm = () => {
           </label>
           <Form.Control
             id="username"
-            placeholder="Username"
+            placeholder="Your name"
             aria-label="Username"
             aria-describedby="basic-addon1"
             className="rounded-4"

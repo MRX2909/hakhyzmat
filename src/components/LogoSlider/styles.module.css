@@ -12,3 +12,11 @@
     border-radius: 10px;
     -webkit-user-drag: none;
 }
+
+.outerWrapper * {
+    z-index: 3;
+}
+
+.outerWrapper {
+    margin-top: 10px;
+}

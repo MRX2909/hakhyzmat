@@ -2,6 +2,8 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import classes from "./styles.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const AllBrands = () => {
   const [brands, setBrands] = useState([]);
@@ -9,6 +11,7 @@ const AllBrands = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    Aos.init({ duration: 600 });
     const fetchData = async (url) => {
       try {
         const response = await axios.get(url);
@@ -32,7 +35,7 @@ const AllBrands = () => {
 
   return (
 
-    <div className="mt-5">
+    <div className="mt-5" data-aos="fade-up">
       <h3 align="center" className={classes.title}>
         Our Suppliers
       </h3>
