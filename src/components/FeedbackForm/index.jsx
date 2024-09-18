@@ -1,20 +1,31 @@
 import { Form, Button } from "react-bootstrap";
 import classes from "./styles.module.css";
+import { useRef, useState } from "react";
 
 const FeedbackForm = () => {
+  const inputName = useRef(null);
+  const inputEmail = useRef(null);
+  const inputPhone = useRef(null);
+  const inputCompany = useRef(null);
+  const inputMessage = useRef(null);
+
+  const handleSubmit = () => {
+    console.log(inputName.current.value);
+  };
   return (
     <div className={"p-4 bg-white rounded-4 " + classes.formWrapper}>
       <div className="d-flex justify-content-around flex-row">
         <div className="my-3 mx-2 w-50">
-          <label htmlFor="username" className="fw-bold">
+          <label htmlFor="name" className="fw-bold">
             Your name:
           </label>
           <Form.Control
-            id="username"
+            id="name"
             placeholder="Your name"
-            aria-label="Username"
+            aria-label="Your name"
             aria-describedby="basic-addon1"
             className="rounded-4"
+            ref={inputName}
           />
         </div>
 
@@ -29,6 +40,7 @@ const FeedbackForm = () => {
             aria-label="email"
             aria-describedby="basic-addon1"
             className="rounded-4"
+            ref={inputEmail}
           />
         </div>
       </div>
@@ -44,18 +56,22 @@ const FeedbackForm = () => {
             aria-label="phone"
             aria-describedby="basic-addon1"
             className="rounded-4"
+            ref={inputPhone}
           />
         </div>
 
         <div className="my-3 mx-2 w-50">
-          <label htmlFor="company" className="fw-bold">Company:</label>
+          <label htmlFor="company" className="fw-bold">
+            Company:
+          </label>
           <Form.Control
             type="text"
             id="company"
-            placeholder="Facebook"
+            placeholder="Your Company Name"
             aria-label="company"
             aria-describedby="basic-addon1"
             className="rounded-4"
+            ref={inputCompany}
           />
         </div>
       </div>
@@ -71,13 +87,21 @@ const FeedbackForm = () => {
             className="form-control rounded-4"
             style={{ resize: "none" }}
             rows={6}
+            ref={inputMessage}
           ></textarea>
         </div>
       </div>
 
       <div className="d-flex justify-content-end flex-row">
         <div className="text-end mx-2 w-100">
-          <Button className="px-4 rounded-4">Send</Button>
+          <Button
+            className="px-4 rounded-4"
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            Send
+          </Button>
         </div>
       </div>
     </div>
