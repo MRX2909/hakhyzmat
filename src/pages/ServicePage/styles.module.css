@@ -1,0 +1,17 @@
+.section {
+  padding: 50px;
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gok {
+  background-color: #120446;
+  color: #fff;
+}
+
+.ak {
+    background-color: #fff;
+    color: #120446;
+}

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./styles.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,7 +7,12 @@ import { Nav } from "react-bootstrap";
 
 const SiteNavbar = () => {
   const [services, setServices] = useState([]);
+  const navigate = useNavigate();
 
+  const goToHref = (e, url) => {
+    e.preventDefault();
+    navigate(url);
+  };
   const fetchData = async (url) => {
     const response = await axios.get(url);
     setServices(response.data);
@@ -53,17 +58,17 @@ const SiteNavbar = () => {
                 Services
               </a>
               <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li></li>
+                {services.map((service) => (
+                  <li key={service.id}>
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={(e) => goToHref(e, `/service/${service.id}`)}
+                    >
+                      {service.name}
+                    </a>
+                  </li>
+                ))}
                 <li className="nav-item dropstart">
                   <a
                     className="nav-link dropdown-toggle"
@@ -85,8 +90,7 @@ const SiteNavbar = () => {
                         Another action
                       </a>
                     </li>
-                    <li>
-                    </li>
+                    <li></li>
                     <li>
                       <a className="dropdown-item" href="#">
                         Something else here
