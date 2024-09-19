@@ -3,6 +3,7 @@ import classes from "./styles.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import brandLogo from "/img/brand.png";
+import { Nav } from "react-bootstrap";
 
 const SiteNavbar = () => {
   const [services, setServices] = useState([]);
@@ -19,9 +20,9 @@ const SiteNavbar = () => {
   return (
     <nav className={"navbar navbar-expand-lg bg-light py-3 " + classes.navbar}>
       <div className="container">
-        <a href="#" className="navbar-brand fw-bold">
+        <Nav.Link as={Link} to="/" className="navbar-brand fw-bold">
           <img src={brandLogo} alt="HakHyzmat" />
-        </a>
+        </Nav.Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -36,14 +37,9 @@ const SiteNavbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href={`/`}>
+              <Nav.Link as={Link} to="/">
                 Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                About
-              </a>
+              </Nav.Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -52,6 +48,7 @@ const SiteNavbar = () => {
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                data-bs-auto-close="outside"
               >
                 Services
               </a>
@@ -66,56 +63,48 @@ const SiteNavbar = () => {
                     Another action
                   </a>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
+                <li></li>
+                <li className="nav-item dropstart">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Dropdown
                   </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Products
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Action
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Another action
+                      </a>
+                    </li>
+                    <li>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Something else here
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Nav.Link as={Link} to="/info">
                 Info
-              </a>
+              </Nav.Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact Us
-              </a>
+              <Nav.Link as={Link} to="/contact">
+                Contact us
+              </Nav.Link>
             </li>
           </ul>
         </div>

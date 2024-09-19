@@ -1,8 +1,14 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import classes from "./styles.module.css";
 import { useRef, useState } from "react";
+import axios from "axios";
 
 const FeedbackForm = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const inputName = useRef(null);
   const inputEmail = useRef(null);
   const inputPhone = useRef(null);
@@ -10,7 +16,19 @@ const FeedbackForm = () => {
   const inputMessage = useRef(null);
 
   const handleSubmit = () => {
-    console.log(inputName.current.value);
+    axios
+      .post("http://localhost:8000/api/contact", {
+        name: inputName.current.value,
+        email: inputEmail.current.value,
+        company_name: inputCompany.current.value,
+        message: inputMessage.current.value,
+      })
+      .then(function (response) {
+        console.log(response.status);
+      })
+      .catch(function (error) {
+        console.error("Serwere birikmekde näsazlyk ýüze çykdy!: " + error);
+      });
   };
   return (
     <div className={"p-4 bg-white rounded-4 " + classes.formWrapper}>
@@ -104,6 +122,20 @@ const FeedbackForm = () => {
           </Button>
         </div>
       </div>
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
