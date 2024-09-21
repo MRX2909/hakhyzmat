@@ -19,6 +19,14 @@
   }
 }
 
+
+
+@media screen and (min-width: 992px) {
+  .dropstart .dropdown-toggle {
+    margin-left: 0.5em;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .dropdown-toggle::before {
     transform: rotate(-90deg);

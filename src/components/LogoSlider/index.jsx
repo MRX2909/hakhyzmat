@@ -13,7 +13,7 @@ const LogoSlider = () => {
   };
 
   useEffect(() => {
-    fetchData("http://127.0.0.1:8000/api/brands");
+    fetchData("http://127.0.0.1:8000/api/brands/");
   }, []);
 
   return (

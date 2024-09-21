@@ -5,6 +5,7 @@ import axios from "axios";
 
 const FeedbackForm = () => {
   const [show, setShow] = useState(false);
+  const [modalText, setModalText] = useState("Meýdanlary dogry dolduryň!");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,19 +17,39 @@ const FeedbackForm = () => {
   const inputMessage = useRef(null);
 
   const handleSubmit = () => {
-    axios
-      .post("http://localhost:8000/api/contact", {
-        name: inputName.current.value,
-        email: inputEmail.current.value,
-        company_name: inputCompany.current.value,
-        message: inputMessage.current.value,
-      })
-      .then(function (response) {
-        console.log(response.status);
-      })
-      .catch(function (error) {
-        console.error("Serwere birikmekde näsazlyk ýüze çykdy!: " + error);
-      });
+    const sendData = {
+      name: inputName.current.value,
+      email: inputEmail.current.value,
+      company_name: inputCompany.current.value,
+      phone_number: inputPhone.current.value,
+      message: inputMessage.current.value,
+    };
+
+    if (
+      sendData.name &&
+      sendData.email &&
+      sendData.company_name &&
+      sendData.phone_number &&
+      sendData.message
+    ) {
+      axios
+        .post("http://localhost:8000/api/contact/", sendData)
+        .then(function (response) {
+          if (response.status === 201) {
+            setModalText("Habar ugradyldy!");
+          }
+        })
+        .catch(function (error) {
+          setModalText("Meýdanlary dogry tertipde dolduryň!");
+          console.error("Serwere birikmekde näsazlyk ýüze çykdy: " + error);
+        })
+        .finally(function () {
+          handleShow();
+        });
+    } else {
+      setModalText("Ähli meýdanlary dolduryň!");
+      handleShow();
+    }
   };
   return (
     <div className={"p-4 bg-white rounded-4 " + classes.formWrapper}>
@@ -122,17 +143,14 @@ const FeedbackForm = () => {
           </Button>
         </div>
       </div>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>HakHyzmat</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>{modalText}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="danger" onClick={handleClose}>
+            Ýapmak
           </Button>
         </Modal.Footer>
       </Modal>
