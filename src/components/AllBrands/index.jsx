@@ -22,7 +22,7 @@ const AllBrands = () => {
         setLoading(false);
       }
     };
-    fetchData("http://127.0.0.1:8000/api/brands/");
+    fetchData("/api/brands/");
   }, []);
 
   if (isLoading) {

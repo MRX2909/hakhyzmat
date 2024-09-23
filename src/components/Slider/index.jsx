@@ -19,7 +19,7 @@ const Slider = () => {
         setLoading(false);
       }
     };
-    fetchData("http://127.0.0.1:8000/api/banners/");
+    fetchData("/api/banners/");
   }, []);
 
   return (

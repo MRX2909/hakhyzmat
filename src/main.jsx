@@ -5,6 +5,10 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
+import axios from "axios";
+import { SERVER_URL } from "../ENV.js";
+
+axios.defaults.baseURL = SERVER_URL;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -20,7 +20,7 @@ const ServicePage = () => {
         setLoading("loaded");
       }
     };
-    fetchData(`http://127.0.0.1:8000/api/services/${serviceId}`);
+    fetchData(`/api/services/${serviceId}/`);
     return () => {
       setData(null);
       setLoading(true);

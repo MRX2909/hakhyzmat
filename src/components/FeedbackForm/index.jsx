@@ -33,7 +33,7 @@ const FeedbackForm = () => {
       sendData.message
     ) {
       axios
-        .post("http://localhost:8000/api/contact/", sendData)
+        .post("/api/contact/", sendData)
         .then(function (response) {
           if (response.status === 201) {
             setModalText("Habar ugradyldy!");
