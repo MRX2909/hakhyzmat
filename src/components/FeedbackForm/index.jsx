@@ -5,7 +5,7 @@ import axios from "axios";
 
 const FeedbackForm = () => {
   const [show, setShow] = useState(false);
-  const [modalText, setModalText] = useState("Meýdanlary dogry dolduryň!");
+  const [modalText, setModalText] = useState("Meýdanlary dogry tertipde dolduryň!");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,8 +39,14 @@ const FeedbackForm = () => {
             setModalText("Habar ugradyldy!");
           }
         })
+        .then(() => {
+          inputName.current.value = "";
+          inputEmail.current.value = "";
+          inputPhone.current.value = "";
+          inputCompany.current.value = "";
+          inputMessage.current.value = "";
+        })
         .catch(function (error) {
-          setModalText("Meýdanlary dogry tertipde dolduryň!");
           console.error("Serwere birikmekde näsazlyk ýüze çykdy: " + error);
         })
         .finally(function () {
