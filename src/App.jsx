@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<MainPage />} />
-        <Route path="*" element={<h3 align="center" className="m-3 text-danger">Beýle sahypa tapylmady!</h3>} />
+        <Route path="*" element={<h3 align="center" className="m-3 textz-danger">Beýle sahypa tapylmady!</h3>} />
         <Route path="info" element={<InfoPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="service/:serviceId" element={<ServicePage />} />

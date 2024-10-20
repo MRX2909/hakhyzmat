@@ -1,54 +1,44 @@
-import { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import classes from "./styles.module.css";
-import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Controller, EffectFade } from "swiper/modules";
 
-const Slider = () => {
-  const [banners, setBanners] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+import "swiper/css/effect-fade";
+import { useState } from "react";
 
-  useEffect(() => {
-    const fetchData = async (url) => {
-      try {
-        const response = await axios.get(url);
-        setBanners(response.data);
-      } catch (err) {
-        setError("Serwer bilen birikmede näsazlyk ýüze çykdy!");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData("/api/banners/");
-  }, []);
-
+const Slider = ({ brands, activeBanner }) => {
+  const [bannerState, setBannerState] = useState(null);
+  if (bannerState) bannerState.slideTo(activeBanner);
   return (
     <div className={classes.wrapper}>
-      <Carousel
-        fade
-        controls={false}
-        indicators={false}
-        keyboard={false}
-        wrap={true}
-        touch={true}
-        interval={3000}
+      <Swiper
+        modules={[Autoplay, Controller, EffectFade]}
+        effect="fade"
+        fadeEffect={{
+          crossFade: true,
+        }}
+        loop
+        autoplay
+        slidesPerView={1}
+        slidesPerGroup={1}
+        onSwiper={setBannerState}
       >
-        {banners.map((banner) => {
+        {brands.map((banner) => {
           return (
-            <Carousel.Item key={banner.id}>
-              <img src={banner.get_image} className={classes.sliderImage} />
+            <SwiperSlide key={banner.id}>
+              <img src={banner.banner_image} className={classes.sliderImage} />
               <Carousel.Caption>
                 <h1 className="shadowText" align="left">
-                  {banner.name}
+                  {banner.banner_name}
                 </h1>
                 <p className="shadowText" align="left">
-                  {banner.description}
+                  {banner.banner_description}
                 </p>
               </Carousel.Caption>
-            </Carousel.Item>
+            </SwiperSlide>
           );
         })}
-      </Carousel>
+      </Swiper>
       <div className={classes.shaped}></div>
     </div>
   );
