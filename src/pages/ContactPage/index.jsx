@@ -28,10 +28,10 @@ const ContactPage = () => {
               <div>
                 <ContactInfo
                   title="our location"
-                  text="Ashgabat, Bitaraplyk Street, 58"
+                  text="G.Kulyyev Street, Gujurly Yashlar building, Office 8. Ashgabat, Turkmenistan"
                 />
-                <ContactInfo title="call us" text="(123) 456-789" />
-                <ContactInfo title="email us" text="contact@company.com" />
+                <ContactInfo title="call us" text="+993 63 714884" />
+                <ContactInfo title="email us" text="info@hakhyzmat.com" />
               </div>
             </div>
           </div>

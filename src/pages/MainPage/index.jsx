@@ -1,5 +1,5 @@
 import AllBrands from "../../components/AllBrands";
-import LogoSlider from "../../components/LogoSlider";
+import SlickLogoSlider from "../../components/SlickLogoSlider";
 import Slider from "../../components/Slider";
 import classes from "./styles.module.css";
 import axios from "axios";
@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const MainPage = () => {
   const [brands, setBrands] = useState([]);
-  const [activeBanner, setActiveBanner] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const fetchData = async (url) => {
     const response = await axios.get(url);
@@ -21,13 +21,11 @@ const MainPage = () => {
   return (
     <>
       <div className={classes.mainWrapper}>
-        <Slider
+        <Slider brands={brands} active={activeIndex} />
+        <SlickLogoSlider
           brands={brands}
-          activeBanner={activeBanner}
-        />
-        <LogoSlider
-          brands={brands}
-          setActiveBanner={setActiveBanner}
+          setActive={setActiveIndex}
+          activeIndex={activeIndex}
         />
       </div>
       <AllBrands brands={brands} />

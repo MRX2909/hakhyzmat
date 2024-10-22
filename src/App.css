@@ -19,8 +19,6 @@
   }
 }
 
-
-
 @media screen and (min-width: 992px) {
   .dropstart .dropdown-toggle {
     margin-left: 0.5em;
@@ -34,7 +32,7 @@
   }
 }
 
-
-.my-swiper-active {
+.my-swiper-active img {
   transform: scale(1.4);
+  transition: transform 0.3s ease;
 }

@@ -1,31 +1,27 @@
 import { Carousel } from "react-bootstrap";
 import classes from "./styles.module.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Controller, EffectFade } from "swiper/modules";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SlickSlider from "react-slick";
 
-import "swiper/css/effect-fade";
-import { useState } from "react";
-
-const Slider = ({ brands, activeBanner }) => {
-  const [bannerState, setBannerState] = useState(null);
-  if (bannerState) bannerState.slideTo(activeBanner);
+const Slider = ({ brands, active }) => {
+  console.log(active);
+  const sliderSettings = {
+    infinite: true,
+    speed: 1000,
+    fade: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+  };
   return (
     <div className={classes.wrapper}>
-      <Swiper
-        modules={[Autoplay, Controller, EffectFade]}
-        effect="fade"
-        fadeEffect={{
-          crossFade: true,
-        }}
-        loop
-        autoplay
-        slidesPerView={1}
-        slidesPerGroup={1}
-        onSwiper={setBannerState}
-      >
+      <SlickSlider {...sliderSettings}>
         {brands.map((banner) => {
           return (
-            <SwiperSlide key={banner.id}>
+            <div key={banner.id}>
               <img src={banner.banner_image} className={classes.sliderImage} />
               <Carousel.Caption>
                 <h1 className="shadowText" align="left">
@@ -35,10 +31,10 @@ const Slider = ({ brands, activeBanner }) => {
                   {banner.banner_description}
                 </p>
               </Carousel.Caption>
-            </SwiperSlide>
+            </div>
           );
         })}
-      </Swiper>
+      </SlickSlider>
       <div className={classes.shaped}></div>
     </div>
   );
